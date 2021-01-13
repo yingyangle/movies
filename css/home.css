@@ -159,7 +159,6 @@ img {
 }
 
 #header {
-	/* padding: 8px 14px; */
 	position: fixed;
 	float: left;
 	top: 0;
@@ -191,6 +190,8 @@ img {
 	cursor: pointer;
 	padding: 0 20px;
 	border-radius: 6px;
+	margin: 0 4px;
+	text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.836);
 }
 
 .header-current, #header-links a:hover {
@@ -208,6 +209,7 @@ img {
 	top: 50%;
 	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
+	text-shadow: 4px 4px 10px rgb(0, 0, 0), 4px 4px 10px rgb(0, 0, 0);
 }
 
 #site-title:hover {
