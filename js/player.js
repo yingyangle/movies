@@ -136,6 +136,10 @@ $(document).ready(function() {
 	})
 
 	// KEYBOARD SHORTCUTS
+	$(document).on('keypress', function(e) {
+		// prevent default keypress behavior
+		e.preventDefault()
+	})
 	$(document).on('keyup', function(e) {
 		// don't fire keyboard shortcuts if typing in an input
 		if (e.target.tagName.toLowerCase() === 'input') return
