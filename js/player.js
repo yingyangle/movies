@@ -142,7 +142,10 @@ $(document).ready(function() {
 		// prevent default keyup behavior
 		e.preventDefault()
 		// pause video if spacebar is pressed
-		if (e.which == 32) togglePlayPause()
+		if (e.which == 32) {
+			e.preventDefault()
+			togglePlayPause()
+		}
 		// skip backwards on left arrow key is pressed
 		else if (e.which == 37) skipBackwards()
 		// skip forwards on right arrow key is pressed
