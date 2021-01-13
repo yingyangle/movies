@@ -84,17 +84,31 @@ $(document).ready(function() {
 	}
 	$('.fullscreen').on('click', toggleFullscreen)
 
+	var which_time = 'remaining'
+
 	// get time remaining in video
 	function getTimeRemaining() {
-		var time_remaining = video.duration - video.currentTime
-		var min = Math.floor(time_remaining / 60)
-		var sec = Math.floor(time_remaining - min * 60)
+		if (which_time === 'remaining') {
+			var time = video.duration - video.currentTime
+		} else if (which_time === 'current') {
+			var time = video.currentTime
+		}
+		var min = Math.floor(time / 60)
+		var sec = Math.floor(time - min * 60)
 		if (min < 10) min = '0' + min
 		if (sec < 10) sec = '0' + sec
-		$('.time-remaining').html(min + ':' + sec)
+		var display_time = min + ':' + sec
+		if (which_time === 'remaining') {
+			display_time = '- ' + display_time
+		}
+		$('.time-remaining').html(display_time)
 	}
 	video.addEventListener('timeupdate', getTimeRemaining)
 	video.onloadedmetadata = getTimeRemaining
+	$('.time-remaining').on('click', () => {
+		if (which_time === 'remaining') which_time = 'current'
+		else which_time = 'remaining'
+	})
 
 	// video scrubbing
 	function scrub(e) {
@@ -122,10 +136,16 @@ $(document).ready(function() {
 	})
 
 	// KEYBOARD SHORTCUTS
-	$(document).keyup(function(e) {
+	$(document).on('keyup', function(e) {
+		// don't fire keyboard shortcuts if typing in an input
+		if (event.target.tagName.toLowerCase() === 'input') return
+		// prevent default keyup behavior
 		e.preventDefault()
 		// pause video if spacebar is pressed
-		if (e.which == 32) togglePlayPause()
+		if (e.which == 32) {
+			e.preventDefault()
+			togglePlayPause()
+		}
 		// skip backwards on left arrow key is pressed
 		else if (e.which == 37) skipBackwards()
 		// skip forwards on right arrow key is pressed
@@ -134,6 +154,7 @@ $(document).ready(function() {
 		else if (e.which == 77) toggleMute()
 		// enter fullscreen if 'f' key is pressed
 		else if (e.which == 70) toggleFullscreen()
+		e.preventDefault()
 	})
 
 
