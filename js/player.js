@@ -138,14 +138,11 @@ $(document).ready(function() {
 	// KEYBOARD SHORTCUTS
 	$(document).on('keyup', function(e) {
 		// don't fire keyboard shortcuts if typing in an input
-		if (event.target.tagName.toLowerCase() === 'input') return
+		if (e.target.tagName.toLowerCase() === 'input') return
 		// prevent default keyup behavior
 		e.preventDefault()
 		// pause video if spacebar is pressed
-		if (e.which == 32) {
-			e.preventDefault()
-			togglePlayPause()
-		}
+		if (e.which == 32) togglePlayPause()
 		// skip backwards on left arrow key is pressed
 		else if (e.which == 37) skipBackwards()
 		// skip forwards on right arrow key is pressed

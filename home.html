@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 		<!-- PAGE INFO -->
-		<title>Movies</title>
+		<title>QuickFlix</title>
 		<meta name="description" content="Watch Movies Here">
 		<!-- FAVICON -->
 		<link rel="icon" type="image/x-icon" href="media/icon.svg">
@@ -21,6 +21,7 @@
 
 	<body>
 
+		<!-- INFO BOX OVERLAY -->
 		<div id="overlay">
 			<div id="infobox">
 				<a class="close-button"></a>
@@ -29,7 +30,7 @@
 					<div class="col-md-4">
 						<img class="poster">
 						<a href="player.html">
-							<button class="play-button btn btn-info">Watch Now</button>
+							<button class="play-button btn">Watch Now</button>
 						</a>
 					</div>
 					<!-- RIGHT COLUMNS -->
@@ -55,6 +56,7 @@
 			</div>
 		</div>
 
+		<!-- NAVBAR HEADER -->
 		<div id="header-container">
 			<div id="header">
 				<!-- <img id="logo" src="icon.svg" alt=""> -->
@@ -80,17 +82,45 @@
 
 		<div id="container" class="text-center">
 
-			<div id="main"></div>
-
-			<div id="footer">
-				<!-- FOOTER LINKS -->
-				<div id="footer-links">
-					<a>About</a>
-					<a>Privacy</a>
-					<a>Contact Us</a>
-					<a>Help Center</a>
+			<!-- SLIDESHOW -->
+			<div id="slideshow" class="row text-left align-text-end">
+				<div class="slide">
+					<img src="media/1.jpg">
+					<div class="slideshow-title">
+						The Grand Budapest Hotel (2014)<br>
+						<p><i class="far fa-clock"> </i>1h 40m <i class="fas fa-star"></i> 8 / 10</p>
+						<p>The Grand Budapest Hotel tells of a legendary concierge at a famous European hotel between the wars and his friendship with a young employee who becomes his trusted protégé. The story involves the theft and recovery of a priceless Renaissance painting, the battle for an enormous family fortune and the slow and then sudden upheavals that transformed Europe during the first half of the 20th century.</p>
+						<a href="player.html">
+							<button class="btn">Watch Now</button>
+						</a>
+					</div>
+				</div>
+				<div class="slide">
+					<img src="media/2.jpg">
+					<div class="slideshow-title">
+						My Hero Academia: Two Heroes (2018)<br>
+						<p><i class="far fa-clock"> </i>1h 44m <i class="fas fa-star"></i> 8.4 / 10</p>
+						<p>All Might and Deku accept an invitation to go abroad to a floating and mobile manmade city, called 'I Island', where they research quirks as well as hero supplemental items at the special 'I Expo' convention that is currently being held on the island. During that time, suddenly, despite an iron wall of security surrounding the island, the system is breached by a villain, and the only ones able to stop him are the students of Class 1-A.</p>
+						<a href="player.html">
+							<button class="btn">Watch Now</button>
+						</a>
+					</div>
+				</div>
+				<div class="slide">
+					<img src="media/3.jpg">
+					<div class="slideshow-title">
+						Life is Beautiful (1997)<br>
+						<p><i class="far fa-clock"> </i>1h 56m <i class="fas fa-star"></i> 8.5 / 10</p>
+						<p>A touching story of an Italian book seller of Jewish ancestry who lives in his own little fairy tale. His creative and happy life would come to an abrupt halt when his entire family is deported to a concentration camp during World War II. While locked up he tries to convince his son that the whole thing is just a game.</p>
+						<a href="player.html">
+							<button class="btn">Watch Now</button>
+						</a>
+					</div>
 				</div>
 			</div>
+
+		 <!-- MAIN CONTENT -->
+			<div id="main"></div>
 
 		</div>
 
