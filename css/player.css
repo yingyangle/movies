@@ -1,13 +1,17 @@
 body {
-	color: #5b5b5b;
+	color: white;
 	font-family: 'Nunito Sans', sans-serif;
 	text-align: center;
 }
 
 #container {
-	margin: 50px;
-	display: flex;
+	margin: 140px 50px;
 	height: 100vh;
+}
+
+p {
+	color: white;
+	font-size: 20px;
 }
 
 a {
@@ -34,13 +38,35 @@ a:hover {
 	border-color: none;
 }
 
+.video-title {
+	color: white;
+	font-size: 50px;
+	font-weight: bold;
+}
+
+.genres {
+	margin-bottom: 10px;
+}
+
+.genre {
+	margin-left: 0;
+	margin-right: 8px;
+}
+
+.fa-star {
+	margin-right: 4px;
+}
+
 .video-container {
-	width: 100%;
-	max-width: 800px;
-	position: relative;
-	margin: auto;
-	display: block;
+	width: 90%;
+	max-width: 1200px;
 	overflow: hidden;
+	display: block;
+	position: absolute;
+	top: 700px;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
 }
 
 .video-container:hover .controls {
@@ -50,7 +76,6 @@ a:hover {
 
 .video {
 	width: 100%;
-	max-width: 800px;
 	position: relative;
 	margin: auto;
 	display: block;
@@ -139,6 +164,10 @@ a:hover {
 	margin-left: 6px;
 }
 
+.time-remaining {
+	cursor: pointer;
+}
+
 .volume-slider-container {
 	height: 20px;
 	width: 100px;
@@ -165,7 +194,7 @@ a:hover {
 	height: 4px;
 	width: 300px;
 	position: absolute;
-	background: red;
+	background: #79b7bb;
 	border-radius: 10px;
 	border: none;
 	outline: none;
@@ -184,7 +213,7 @@ a:hover {
 }
 
 .bar {
-	height: 6px;
+	height: 9px;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -192,7 +221,7 @@ a:hover {
 }
 
 .juice {
-	height: 6px;
+	height: 9px;
 	width: 0;
-	background: red;
+	background: #79b7bb;
 }
