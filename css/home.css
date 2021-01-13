@@ -79,10 +79,6 @@ img {
 	visibility: hidden;
 }
 
-#infobox js {
-	display: none;
-}
-
 #infobox.visible {
 	transform: translateY(0px);
 	opacity: 0.98;
