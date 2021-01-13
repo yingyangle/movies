@@ -1,0 +1,198 @@
+body {
+	color: #5b5b5b;
+	font-family: 'Nunito Sans', sans-serif;
+	text-align: center;
+}
+
+#container {
+	margin: 50px;
+	display: flex;
+	height: 100vh;
+}
+
+a {
+	font-size: 18px;
+	color: #79b7bb;
+	line-height: 40px;
+}
+
+a:hover {
+	color: #79b7bb;
+}
+
+.btn {
+	color: #f7f7f7;
+	background-color: #79b7bb;
+	border-color: transparent;
+	margin: 0 10px 0 10px;
+	font-size: 18px;
+}
+
+.btn:hover, .btn:focus, .btn:active {
+	color: #f7f7f7;
+	background-color: #679b9f;
+	border-color: none;
+}
+
+.video-container {
+	width: 100%;
+	max-width: 800px;
+	position: relative;
+	margin: auto;
+	display: block;
+	overflow: hidden;
+}
+
+.video-container:hover .controls {
+	transform: translateY(0);
+	transition: 0.2s;
+}
+
+.video {
+	width: 100%;
+	max-width: 800px;
+	position: relative;
+	margin: auto;
+	display: block;
+	overflow: hidden;
+}
+
+.controls {
+	display: flex;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	flex-wrap: wrap;
+	background: rgb(0, 0, 0, 0.6);
+	transform: translateY(100%);
+	transition: 0.2s;
+}
+
+.buttons {
+	margin: 0 6px;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	color: white;
+}
+
+.buttons button {
+	background: none;
+	border: 0;
+	outline: 0;
+	cursor: pointer;
+}
+
+.buttons button {
+	color: white;
+	font-family: 'Font Awesome 5 Free';
+	font-weight: 600;
+	font-size: 16px;
+	width: 30px;
+	height: 30px;
+	-webkit-font-smoothing: antialiased;
+}
+
+.buttons span {
+	font-size: 14px;
+	margin-top: 5px;
+}
+
+.left-buttons {
+	float: left;
+	display: inline;
+}
+
+.right-buttons {
+	float: right;
+	display: flex;
+}
+
+.play:before {
+	content: '\f04b';
+}
+
+.play.pause:before {
+	content: '\f04c';
+}
+
+.skip-forwards:before {
+	content: '\f2f9';
+}
+
+.skip-backwards:before {
+	content: '\f2ea';
+}
+
+.volume-button:before {
+	content: '\f027';
+	margin-right: 40px;
+}
+
+.volume-button.mute:before {
+	content: '\f6a9';
+	margin-right: 40px;
+}
+
+.fullscreen:before {
+	content: '\f065';
+	margin-left: 6px;
+}
+
+.volume-slider-container {
+	height: 20px;
+	width: 100px;
+	display: inline-block;
+}
+
+.volume-slider {
+	height: 4px;
+	width: 100px;
+	position: absolute;
+	top: 20px;
+	left: 140px;
+	margin: 0 auto;
+	margin-left: 6px;
+	background: #555;
+	border-radius: 15px;
+	display: inline-block;
+	visibility: hidden;
+	opacity: 0;
+	transition: 0.2s;
+}
+
+.volume-slider .ui-slider-range-min {
+	height: 4px;
+	width: 300px;
+	position: absolute;
+	background: red;
+	border-radius: 10px;
+	border: none;
+	outline: none;
+}
+
+.volume-slider .ui-slider-handle {
+	width: 14px;
+	height: 14px;
+	border-radius: 20px;
+	background: white;
+	position: absolute;
+	margin-left: -8px;
+	margin-top: -5px;
+	cursor: pointer;
+	outline: none;
+}
+
+.bar {
+	height: 6px;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: rgb(255, 255, 255, 0.2)
+}
+
+.juice {
+	height: 6px;
+	width: 0;
+	background: red;
+}
