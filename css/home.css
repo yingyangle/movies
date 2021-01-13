@@ -60,7 +60,6 @@ img {
 #overlay {
 	position: fixed;
 	overflow-y: scroll;
-	z-index: 40;
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -70,6 +69,7 @@ img {
 	opacity: 0;
 	text-align: center;
 	transition: 0.3s;
+	z-index: 0;
 }
 
 #infobox {

@@ -12,8 +12,22 @@ function getMovieInfo(id) {
 function openOverlay() {
 	$('#overlay').css('visibility', 'visible')
 		.css('opacity', 1)
+		.css('z-index', 50)
 	$('#infobox').addClass('visible')
 }
+
+// close overlay
+function closeOverlay() {
+	$('#overlay').css('visibility', 'hidden')
+		.css('opacity', 0)
+		.css('z-index', 0)
+	$('#infobox').toggleClass('visible')
+}
+$('.close-button, #overlay').on('click', closeOverlay)
+$('#infobox').on('click', (e) => {
+	// don't trigger #overlay click event if click on infobox
+	e.stopPropagation()
+})
 
 // change overlay details
 function loadOverlay(movie) {
@@ -104,21 +118,6 @@ for (var i in genre_ids) {
 	var genre = genre_ids[i]
 	showMovies(genre['id'], genre['name'])
 }
-
-// close overlay button
-$('.close-button, #overlay').on('click', () => {
-	if ($('#overlay').css('visibility') == 'hidden') {
-		$('#overlay').css('visibility', 'visible')
-				.css('opacity', 1)
-	} else {
-		$('#overlay').css('visibility', 'hidden')
-				.css('opacity', 0)
-	}
-	$('#infobox').toggleClass('visible')
-})
-$('#infobox').on('click', (e) => {
-	e.stopPropagation() // don't trigger #overlay click event
-})
 
 // automatic slideshow
 $('#slideshow > div:gt(0)').hide();
