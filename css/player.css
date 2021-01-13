@@ -12,6 +12,7 @@ body {
 p {
 	color: white;
 	font-size: 20px;
+	text-shadow: 0 0 4px rgb(0, 0, 0), 0 0 20px rgb(0, 0, 0);
 }
 
 a {
@@ -42,6 +43,7 @@ a:hover {
 	color: white;
 	font-size: 50px;
 	font-weight: bold;
+	text-shadow: 0 0 40px rgb(0, 0, 0), 0 0 40px rgb(0, 0, 0);
 }
 
 .genres {

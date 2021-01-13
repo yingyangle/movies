@@ -11,6 +11,7 @@ body {
 #container {
 	margin: 50px 20px;
 	height: 100vh;
+	z-index: 20;
 }
 
 a {
@@ -29,7 +30,7 @@ img {
 
 .btn {
 	color: white;
-	background-color: rgba(0, 0, 0, 0.399);
+	background-color: rgba(0, 0, 0, 0.288);
 	border-color: white;
 	margin: 0;
 }
@@ -47,10 +48,19 @@ img {
 	overflow: hidden;
 }
 
+#vignette {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	box-shadow: 0 0 100px rgba(0, 0, 0, 0.714) inset;
+}
+
 #overlay {
 	position: fixed;
 	overflow-y: scroll;
-	z-index: 100;
+	z-index: 40;
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -77,6 +87,7 @@ img {
 	transform: translateY(30px);
 	transition: 0.2s;
 	visibility: hidden;
+	text-shadow: 0 0 10px rgb(0, 0, 0), 0 0 10px rgb(0, 0, 0);
 }
 
 #infobox.visible {
@@ -104,6 +115,7 @@ img {
 #infobox .poster {
 	margin-top: 20px;
 	margin-bottom: 10px;
+	box-shadow: 2px 2px 40px rgba(0, 0, 0, 0.399);
 }
 
 .play-button {
@@ -114,10 +126,12 @@ img {
 	font-size: 40px;
 	line-height: 44px;
 	margin-bottom: 4px;
+	text-shadow: 0 0 20px rgb(0, 0, 0), 0 0 20px rgb(0, 0, 0);
 }
 
 .genres {
 	margin-top: 20px;
+	text-shadow: none;
 }
 
 .genre {
@@ -126,6 +140,7 @@ img {
 	border-radius: 14px;
 	background-color: #679b9fb7;
 	white-space: nowrap;
+	box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.295);
 }
 
 .description {
@@ -139,7 +154,7 @@ img {
 
 #header-container {
 	display: table;
-	z-index: 10;
+	z-index: 30;
 	position: fixed;
 }
 
@@ -154,6 +169,7 @@ img {
 	vertical-align: middle;
 	color:rgba(255, 255, 255, 0.838);
 	background-color: rgba(0, 0, 0, 0.803);
+	box-shadow: 0 4px 100px rgba(0, 0, 0, 0.714);
 }
 
 #header-links {
@@ -230,7 +246,7 @@ img {
 	width: 20px;
 	height: 20px;
 	cursor: pointer;
-	z-index: 3;
+	z-index: 23;
 }
 
 #slideshow {
@@ -243,7 +259,7 @@ img {
 	margin-top: 140px;
 	position: relative;
 	padding: 10px;
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+	box-shadow: 2px 2px 40px rgba(0, 0, 0, 0.399);
 }
 
 #slideshow:after {
@@ -266,7 +282,6 @@ img {
 	overflow: auto;
 	position: relative;
 	display: inline-block;
-	background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.815), rgba(255, 255, 255, 0));
 }
 
 .slide:after {
@@ -277,7 +292,7 @@ img {
 	width: 100%;
 	height: 100%;
 	display: inline-block;
-	background: linear-gradient(0deg, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.815));
+	background: linear-gradient(0deg, rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.884));
 }
 
 #slideshow img {
@@ -294,14 +309,17 @@ img {
 	right: 0;
 	font-size: 50px;
 	font-weight: bold;
-	opacity: 0.7;
+	opacity: 0.9;
 	z-index: 3;
 	padding: 30px;
+	text-shadow: 0 0 30px rgb(0, 0, 0), 0 0 30px rgb(0, 0, 0);
+	text-shadow: 0 0 4px rgb(0, 0, 0), 0 0 10px rgb(0, 0, 0);
 }
 
 .slideshow-title p {
 	font-size: 16px;
 	font-weight: normal;
+	text-shadow: 0 0 4px rgb(0, 0, 0), 0 0 10px rgb(0, 0, 0);
 }
 
 #main {
@@ -312,6 +330,7 @@ img {
 	font-weight: bold;
 	float: left;
 	margin-left: 60px;
+	text-shadow: 0 0 40px rgb(0, 0, 0), 0 0 30px rgb(0, 0, 0);
 }
 
 .genre_container {
@@ -323,13 +342,14 @@ img {
 	display: inline-block;
 	margin: 10px 20px;
 	cursor: pointer;
+	box-shadow: 2px 2px 40px rgba(0, 0, 0, 0.399);
 	transform: translateY(0);
 	transition: 0.1s;
 }
 
 .movie:hover {
 	transform: scale(1.1);
-	box-shadow: 2px 2px 60px rgba(0, 0, 0, 0.708);
+	box-shadow: 2px 2px 60px rgba(0, 0, 0, 0.747);
 }
 
 #footer {
