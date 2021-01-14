@@ -71,11 +71,6 @@ a:hover {
 	transform: translate(-50%, -50%);
 }
 
-.video-container:hover .controls {
-	transform: translateY(0);
-	transition: 0.2s;
-}
-
 .video {
 	width: 100%;
 	position: relative;
@@ -92,6 +87,11 @@ a:hover {
 	flex-wrap: wrap;
 	background: rgb(0, 0, 0, 0.6);
 	transform: translateY(100%);
+	transition: 0.2s;
+}
+
+.controls.show {
+	transform: translateY(0);
 	transition: 0.2s;
 }
 
@@ -128,11 +128,13 @@ a:hover {
 .left-buttons {
 	float: left;
 	display: inline;
+	height: 100%;
 }
 
 .right-buttons {
 	float: right;
 	display: flex;
+	height: 100%;
 }
 
 .play:before {
@@ -151,12 +153,12 @@ a:hover {
 	content: '\f2ea';
 }
 
-.volume-button:before {
+.volume-button:before, .volume:before {
 	content: '\f027';
 	margin-right: 40px;
 }
 
-.volume-button.mute:before {
+.volume-button.mute:before, .mute:before {
 	content: '\f6a9';
 	margin-right: 40px;
 }
@@ -170,17 +172,20 @@ a:hover {
 	cursor: pointer;
 }
 
-.volume-slider-container {
-	height: 20px;
-	width: 100px;
+.volume-controls {
 	display: inline-block;
+}
+
+.volume-slider-container {
+	width: 180px;
+	/* display: inline-block; */
 }
 
 .volume-slider {
 	height: 4px;
 	width: 100px;
 	position: absolute;
-	top: 20px;
+	top: 22px;
 	left: 140px;
 	margin: 0 auto;
 	margin-left: 6px;
@@ -226,4 +231,34 @@ a:hover {
 	height: 9px;
 	width: 0;
 	background: #79b7bb;
+}
+
+svg, g {
+	transition: 0.3s;
+}
+
+/* VIDEO OVERLAY INDICATOR */
+
+#indicator, #indicator:before {
+	color: rgba(0, 0, 0, 0.568);
+	font-family: 'Font Awesome 5 Free';
+	font-weight: 600;
+	font-size: 100px;
+	-webkit-font-smoothing: antialiased;
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	transition: 0.6s;
+	/* cursor: pointer; */
+}
+
+#indicator.play:before {
+	content: '\f144';
+}
+
+#indicator.pause:before {
+	content: '\f28b';
 }

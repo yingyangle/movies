@@ -2,26 +2,73 @@ $(document).ready(function() {
 
 	var video = document.querySelector('.video')
 
+	var mouseDown = 0
+	document.body.onmousedown = function() { 
+		++mouseDown
+	}
+	document.body.onmouseup = function() {
+		--mouseDown
+	}
+
+	// show/hide video controls on hover
+	$('.video-container').on('mouseover', () => {
+		$('.controls').addClass('show')
+	})
+	$('.video-container').on('mouseout', () => {
+		// don't hide controls if video paused or if mousedown
+		// and controls currently showing (volume slider)
+		if (video.paused) return
+		if ($('.controls').hasClass('show') && mouseDown) return
+		$('.controls').removeClass('show')
+	})
+
+	// show video action overlay indicator
+	function showIndicator() {
+		$('#indicator-parent').css('opacity', 1)
+				.css('visibility', 'visible')
+				.delay(300)
+				.queue(function (next) { 
+					$('#indicator-parent').css('opacity', 0)
+					$('#indicator-parent').css('visibility', 'hidden')
+					$('#indicator').css('opacity', 1)
+					next()
+				})
+			$('#indicator').css('opacity', 0)
+	}
+
 	// toggle play/pause video
 	function togglePlayPause() {
-		if (video.paused) video.play()
-		else video.pause()
-		$('.play').toggleClass('pause')
+		if (video.paused) {
+			video.play()
+			// show overlay play icon
+			$('#indicator').attr('class', 'play')
+			showIndicator()
+		}
+		else {
+			video.pause()
+			// show overlay pause icon
+			$('#indicator').attr('class', 'pause')
+			showIndicator()
+		}
+		$('.buttons .play').toggleClass('pause')
 	}
-	$('.play').on('click', togglePlayPause)
-	$('.video').on('click', togglePlayPause)
+	$('.buttons .play, .video, #indicator-parent').on('click', togglePlayPause)
 
 	// skip forwards 15 seconds
 	function skipForwards() {
 		video.currentTime = video.currentTime + 15
-		// videojs($('.video')).currentTime(video.currentTime + 15)
+		// show overlay pause icon
+		$('#indicator').attr('class', 'skip-forwards')
+		showIndicator()
 	}
 	$('.skip-forwards').on('click', skipForwards)
 
 	// skip backwards 15 seconds
 	function skipBackwards() {
 		video.currentTime = video.currentTime - 15
-		// videojs($('.video')).currentTime(video.currentTime - 15)
+		// show overlay pause icon
+		$('#indicator').attr('class', 'skip-backwards')
+		showIndicator()
 	}
 	$('.skip-backwards').on('click', skipBackwards)
 
@@ -40,6 +87,9 @@ $(document).ready(function() {
 
 	// adjust volume according to volume slider
 	function updateVolume(volume_val) {
+		volume_slider.css('visibility', 'visible')
+		volume_slider.css('opacity', 1)
+		$('.controls').addClass('show')
 		if (video.muted) {
 			video.muted = false
 		}
@@ -49,11 +99,18 @@ $(document).ready(function() {
 	volume_slider.on('input', updateVolume)
 
 	// show/hide volume slider on hover
-	$('.volume-slider-container, .volume-button').on('mouseover', () => {
+	$('.volume-button').on('mouseover', () => {
 		volume_slider.css('visibility', 'visible')
 		volume_slider.css('opacity', 1)
 	})
-	$('.volume-slider-container, .volume-button').on('mouseout', () => {
+	$('.volume-controls').on('mouseover', () => {
+		if (volume_slider.css('visibility') === 'hidden') return
+		volume_slider.css('visibility', 'visible')
+		volume_slider.css('opacity', 1)
+	})
+	$('.volume-controls, .volume-button').on('mouseout', () => {
+		// if mousedown and controls currently showing
+		if ($('.controls').hasClass('show') && mouseDown) return
 		volume_slider.css('visibility', 'hidden')
 		volume_slider.css('opacity', 0)
 	})
@@ -64,10 +121,16 @@ $(document).ready(function() {
 			video.muted = false
 			$('.volume-slider').slider('value', 100)
 			$('.volume-button').removeClass('mute')
+			// show overlay pause icon
+			$('#indicator').attr('class', 'volume')
+			showIndicator()
 		} else { // mute video
 			video.muted = true
 			$('.volume-slider').slider('value', 0)
 			$('.volume-button').addClass('mute')
+			// show overlay pause icon
+			$('#indicator').attr('class', 'mute')
+			showIndicator()
 		}
 	}
 	$('.volume-button').on('click', toggleMute)
@@ -108,6 +171,7 @@ $(document).ready(function() {
 	$('.time-remaining').on('click', () => {
 		if (which_time === 'remaining') which_time = 'current'
 		else which_time = 'remaining'
+		getTimeRemaining()
 	})
 
 	// video scrubbing
@@ -131,7 +195,7 @@ $(document).ready(function() {
 		var pos = video.currentTime / video.duration
 		$('.juice').css('width', pos * 100 + '%')
 		if (video.ended) {
-			$('.play').removeClass('pause')
+			$('.buttons .play').removeClass('pause')
 		}
 	})
 
@@ -160,7 +224,6 @@ $(document).ready(function() {
 		else if (e.which == 70) toggleFullscreen()
 		e.preventDefault()
 	})
-
 
 })
 

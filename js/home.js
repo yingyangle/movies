@@ -82,6 +82,7 @@ function showMovies(genre_id, genre_name) {
 		$(genre_container).addClass('genre_container')
 		// for each movie
 		data.results.forEach(item => {
+			if (item.poster_path == null) return
 			// show movie poster
 			var image = document.createElement('img')
 			$(image).addClass('movie')

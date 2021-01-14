@@ -17,6 +17,15 @@
 		<link rel="stylesheet" href="css/home.css">
 		<link rel="stylesheet" href="css/player.css">
 
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163440366-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-163440366-1');
+		</script>
+
 	</head>
 
 	<body class="text-center">
@@ -60,7 +69,11 @@
 			<div class="video-container">
 				<!-- VIDEO SOURCE -->
 				<video src="media/rock.mp4" class="video"></video>
-				<div class="controls">
+				<!-- OVERLAY INDICATOR -->
+				<div id="indicator-parent">
+					<div id="indicator" class="play"></div>
+				</div>
+				<div class="controls show">
 					<!-- PROGRESS BAR -->
 					<div class="bar">
 						<div class="juice"></div>
@@ -72,13 +85,13 @@
 							<button class="skip-backwards"></button>
 							<button class="skip-forwards"></button>
 							<!-- VOLUME CONTROLS -->
-							<span class="volume-controls">
+							<div class="volume-controls">
 								<button class="volume-button" class="volume-button"></button>
 								<!-- VOLUME SLIDER -->
 								<div class="volume-slider-container">
 									<div class="volume-slider"></div>
 								</div>
-							</span>
+							</div>
 						</div>
 						<div class="right-buttons">
 							<span class="time-remaining"></span>
