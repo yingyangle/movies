@@ -1,13 +1,18 @@
+var mouseDown = 0
+
 $(document).ready(function() {
 
 	var video = document.querySelector('.video')
 
-	var mouseDown = 0
 	document.body.onmousedown = function() { 
-		++mouseDown
+		mouseDown = 1
 	}
 	document.body.onmouseup = function() {
-		--mouseDown
+		mouseDown = 0
+		// if ($('.volume-slider').css('opacity') == 1) {
+		// 	$('.volume-slider').css('opacity', 0)
+		// 	$('.controls').removeClass('show')
+		// }
 	}
 
 	// show/hide video controls on hover
@@ -15,10 +20,9 @@ $(document).ready(function() {
 		$('.controls').addClass('show')
 	})
 	$('.video-container').on('mouseout', () => {
-		// don't hide controls if video paused or if mousedown
-		// and controls currently showing (volume slider)
-		if (video.paused) return
-		if ($('.controls').hasClass('show') && mouseDown) return
+		// don't hide controls if mousedown
+		// and volume slider is showing
+		if ($('.volume-slider').css('opacity') == 1 && mouseDown) return
 		$('.controls').removeClass('show')
 	})
 
@@ -110,7 +114,7 @@ $(document).ready(function() {
 	})
 	$('.volume-controls, .volume-button').on('mouseout', () => {
 		// if mousedown and controls currently showing
-		if ($('.controls').hasClass('show') && mouseDown) return
+		if ($('.volume-slider').css('opacity') == 1 && mouseDown) return
 		volume_slider.css('visibility', 'hidden')
 		volume_slider.css('opacity', 0)
 	})
